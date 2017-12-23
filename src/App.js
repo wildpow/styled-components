@@ -13,7 +13,10 @@ to { transform: rotate(360deg); }
 
 const spinAnimation = () => css`animation: ${LogoSpin} infinite ${props => props.time || 20}s linear;`
 
-const Logo = styled.img`
+const Logo = styled.img.attrs({
+  alt: 'logo',
+  src: logo,
+})`
   ${props => spinAnimation()};
   height: 80px;
 `
@@ -23,6 +26,8 @@ const Header = styled.div`
   height: 150px;
   padding: 20px;
   color: white;
+
+  > h2 { color: red; }
 `
 
 const Title = styled.h1`
@@ -37,9 +42,10 @@ class App extends Component {
     return (
       <Wrapper>
         <Header>
-          <Logo src={logo} alt="logo" time={2}/>
-          <Logo src={logo} alt="logo" time={20}/>
+          <Logo alt="logo" time={2}/>
+          <Logo alt="logo" time={20}/>
           <Title>Welcome to React</Title>
+          <h2>Sub header</h2>
         </Header>
         <Intro>
           To get started, edit <code>src/App.js</code> and save to reload.
